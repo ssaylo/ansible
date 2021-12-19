@@ -1,0 +1,28 @@
+- name: Prepare packages
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - epel-release
+      - vim
+
+# - name: install vim
+#   git:
+#     repo: https://github.com/vim/vim.git
+#     dest: ~/Documents/vim
+
+# - name: make vim
+#   shell: make distclean && make && make install
+#   args:
+#     chdir: ~/Documents/vim
+
+- name: clone config file
+  git:
+    repo: git@github.com:shfshanyue/vim-config.git
+    dest: ~/.vim-config
+
+- name: copy config file
+  copy:
+    src: ~/.vim-config/.vimrc
+    dest: ~/.vimrc
+    remote_src: yes

@@ -1,0 +1,33 @@
+- name: Prepare packages
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - epel-release
+      - sysstat
+      - git
+      - bash-completion
+      - bind-utils
+      - jq
+      - htop
+      - lsof
+      - rsync
+  ignore_errors: true
+
+- name: set -o vi
+  lineinfile:
+    path: ~/.bashrc
+    regexp: "^set -o vi$"
+    line: "set -o vi"
+
+- name: C-l -> clear
+  lineinfile:
+    path: ~/.bashrc
+    regexp: "clear-screen"
+    line: bind -m vi-insert "\C-l":clear-screen
+
+- name: LANG=
+  lineinfile:
+    path: ~/.bashrc
+    regexp: "export LANG"
+    line: export LANG=''
