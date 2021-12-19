@@ -1,17 +1,12 @@
 [prod]
-shanyue
-shuifeng
+aliyun
 
 [dev]
-huawei
-qi
+aliyun
 
 [op]
-shanyue
-shuifeng
-huawei
-qi
+aliyun
 
 [ssr]
-wall
+aliyun
 
